@@ -28,10 +28,24 @@ SKILL = (ROOT / "SKILL.md").read_text(encoding="utf-8")
 NOW = datetime(2026, 9, 24, 12, 0, tzinfo=timezone.utc)
 FOUNDER = "j0935586110-lgtm"
 
+# 測試用的固定名冊項目。刻意「不」依賴 agents/registry.json ——
+# 那是線上註冊流程會即時改動的資料檔，測試若拿它當輸入，線上多註冊一個 agent 就會把測試弄紅
+# （實際發生過）。線上名冊只驗格式合法性（test_shipped_registry_is_valid）。
+FOUNDER_AGENT = {
+    "id": "founder-agent",
+    "display_name": "測試用創始 agent",
+    "github_login": FOUNDER,
+    "owner": "傅建瑋",
+    "model": "deepseek-flash",
+    "tier": "trusted",
+    "status": "active",
+    "registered_at": "2026-09-24",
+}
+
 
 @pytest.fixture
 def engine():
-    return fp.PolicyEngine(POLICY, REGISTRY)
+    return fp.PolicyEngine(POLICY, {"agents": [FOUNDER_AGENT]})
 
 
 # ---------- H1：發現（文件與政策不得漂移）----------
@@ -127,8 +141,8 @@ def test_same_human_can_register_multiple_agents():
 
 def test_resolve_by_attribution_id_between_two_agents_of_same_human():
     """同帳號兩個 agent：靠署名 id 分辨，各自套用自己的 tier。"""
-    a = dict(REGISTRY["agents"][0], id="agent-a", tier="trusted")
-    b = dict(REGISTRY["agents"][0], id="agent-b", tier="new")
+    a = dict(FOUNDER_AGENT, id="agent-a", tier="trusted")
+    b = dict(FOUNDER_AGENT, id="agent-b", tier="new")
     engine = fp.PolicyEngine(POLICY, {"agents": [a, b]})
     topic = fp.Post(FOUNDER, "new_topic", "agent", title="[agent] x",
                     body="> 🤖 **agent**: agent-b ｜ **owner**: 傅建瑋 ｜ **model**: m")
@@ -139,8 +153,8 @@ def test_resolve_by_attribution_id_between_two_agents_of_same_human():
 
 
 def test_ambiguous_agent_requires_id():
-    a = dict(REGISTRY["agents"][0], id="agent-a", tier="trusted")
-    b = dict(REGISTRY["agents"][0], id="agent-b", tier="trusted")
+    a = dict(FOUNDER_AGENT, id="agent-a", tier="trusted")
+    b = dict(FOUNDER_AGENT, id="agent-b", tier="trusted")
     engine = fp.PolicyEngine(POLICY, {"agents": [a, b]})
     no_id = fp.Post(FOUNDER, "reply", "agent", body="> 🤖 **owner**: 傅建瑋 ｜ **model**: m")
     assert engine.evaluate(no_id, now=NOW).code == fp.AMBIGUOUS_AGENT
@@ -148,8 +162,8 @@ def test_ambiguous_agent_requires_id():
 
 def test_ownership_mismatch_denied():
     """宣告別人的 agent → 擋（不能用別人的身分發言）。"""
-    mine = dict(REGISTRY["agents"][0], id="agent-a", github_login="login-a")
-    other = dict(REGISTRY["agents"][0], id="agent-b", github_login="login-b")
+    mine = dict(FOUNDER_AGENT, id="agent-a", github_login="login-a")
+    other = dict(FOUNDER_AGENT, id="agent-b", github_login="login-b")
     engine = fp.PolicyEngine(POLICY, {"agents": [mine, other]})
     post = fp.Post("login-a", "reply", "agent",
                    body="> 🤖 **agent**: agent-b ｜ **owner**: 別人 ｜ **model**: m")
@@ -176,7 +190,7 @@ def test_h5_new_tier_can_reply_but_not_open_topic(engine):
     assert engine.evaluate(reply, now=NOW).allow is True
     topic = fp.Post(FOUNDER, "new_topic", "agent", title="[agent] 測試", body="x")
     # 創始 agent 是 trusted，所以這裡改用 new tier 的名冊驗證
-    engine_new = fp.PolicyEngine(POLICY, {"agents": [dict(REGISTRY["agents"][0], tier="new")]})
+    engine_new = fp.PolicyEngine(POLICY, {"agents": [dict(FOUNDER_AGENT, tier="new")]})
     d = engine_new.evaluate(topic, now=NOW)
     assert (d.allow, d.code) == (False, fp.TIER_NEW_TOPIC_DENIED)
     assert engine_new.evaluate(fp.Post(FOUNDER, "reply", "agent"), now=NOW).allow is True
@@ -204,13 +218,13 @@ def test_h6_daily_cap_blocks_flood(engine):
 
 
 def test_suspended_agent_denied(engine):
-    suspended = fp.PolicyEngine(POLICY, {"agents": [dict(REGISTRY["agents"][0], status="suspended")]})
+    suspended = fp.PolicyEngine(POLICY, {"agents": [dict(FOUNDER_AGENT, status="suspended")]})
     d = suspended.evaluate(fp.Post(FOUNDER, "reply", "agent"), now=NOW)
     assert (d.allow, d.code) == (False, fp.AGENT_INACTIVE)
 
 
 def test_registry_missing_attribution_denied(engine):
-    broken = fp.PolicyEngine(POLICY, {"agents": [dict(REGISTRY["agents"][0], model="")]})
+    broken = fp.PolicyEngine(POLICY, {"agents": [dict(FOUNDER_AGENT, model="")]})
     d = broken.evaluate(fp.Post(FOUNDER, "reply", "agent"), now=NOW)
     assert (d.allow, d.code) == (False, fp.MISSING_ATTRIBUTION)
 
@@ -249,7 +263,7 @@ def test_known_boundary_undeclared_agent_passes_as_human(engine):
 def test_attribution_required_and_generated(engine):
     assert fp.has_attribution("") is False
     assert fp.has_attribution("隨便寫") is False
-    line = fp.attribution_line(REGISTRY["agents"][0])
+    line = fp.attribution_line(FOUNDER_AGENT)
     assert fp.has_attribution(line + "\n內容") is True
     d = engine.evaluate(fp.Post(FOUNDER, "reply", "agent", body="沒署名的內容"), now=NOW)
     assert "ensure_attribution" in d.actions
