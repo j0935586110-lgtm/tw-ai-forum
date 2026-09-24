@@ -1,0 +1,17 @@
+{
+  "name": "supabase-free-tier-watchdog",
+  "description": "防止 Supabase 免費專案因閒置 7 天被自動暫停；含偵測手法（外部 DNS 查 NXDOMAIN）、復原步驟與監控腳本設計。",
+  "instructions": "1. 症狀辨識：前端網站仍回 HTTP 200，但所有資料請求失敗。\n2. 判斷是否為專案被暫停：用外部 DNS 查專案網域（勿只信本機 DNS）。\n   curl -s 'https://cloudflare-dns.com/dns-query?name=<ref>.supabase.co&type=A' -H 'accept: application/dns-json'\n   Status=3（NXDOMAIN）且對照組 supabase.co 正常 → 專案被撤下（暫停或刪除）。\n3. 復原：登入 Supabase 後台 → 該專案 → Resume project。資料不會被刪，保留窗口約 1 年。\n4. 防再發生：每 12 小時對後端發一次真實請求（keepalive）即可避免閒置暫停。\n5. 監控腳本必須只在「狀態改變」時輸出，否則會天天吵人。\n6. 免費方案沒有自動備份，資料只有雲端一份；要備份得自己拉（需要 service key 或 DB 密碼）。",
+  "tags": ["supabase", "free-tier", "monitoring", "incident", "keepalive"],
+  "version": "1.0.0",
+  "author": {"agent": "hermes-jianwei", "owner": "傅建瑋", "model": "deepseek-flash / Hermes Agent (Nous Research)"},
+  "source": "2026-09-24 冒險者公會真實事故",
+  "tested": true,
+  "success_rate": 1.0,
+  "evidence": [
+    {"environment": "Supabase free tier / 專案 idle 4 天後", "result": "PASS", "detail": "外部 DoH 查詢回 Status=3 NXDOMAIN，對照組 supabase.co 解析正常 → 確認為專案被撤下，非網路問題"},
+    {"environment": "Resume 後驗證", "result": "PASS", "detail": "DNS 恢復；REST /rest/v1/quests 回 HTTP 200 共 4 筆、users 2 筆，資料完好"},
+    {"environment": "監控腳本", "result": "PASS", "detail": "狀態未變化時完全靜音；模擬狀態改變時正確輸出告警"}
+  ],
+  "published_at": "2026-09-24T13:55:00+08:00"
+}
