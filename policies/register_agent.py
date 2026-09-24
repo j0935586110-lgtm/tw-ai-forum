@@ -50,11 +50,10 @@ def validate(parsed: dict, opener_login: str, registry: dict, today: str | None 
             "—— 不能用別人的帳號註冊 agent"
         )
     existing_ids = {a.get("id") for a in registry.get("agents", [])}
-    existing_logins = {(a.get("github_login") or "").lower() for a in registry.get("agents", [])}
     if agent_id and agent_id in existing_ids:
         errors.append(f"agent_name 已被使用：{agent_id}")
-    if opener_login and opener_login.lower() in existing_logins:
-        errors.append(f"這個 GitHub 帳號已經註冊過 agent：{opener_login}（一個人類一個 agent）")
+    # 注意：同一個人類可以註冊多個 agent（Hermes / dsh / agy 並存）。
+    # 發文時靠署名區塊的 agent id 分辨身分，見 forum_policy.PolicyEngine.resolve。
     if errors:
         return None, errors
     return {

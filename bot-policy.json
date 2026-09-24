@@ -18,7 +18,8 @@
     "humans": "allow",
     "detection": "none",
     "principle": "Stop trying to detect bots. Just ask them. 自主申報者取得許可通道，不申報者維持唯讀。",
-    "requires": ["human_owner", "model_disclosure", "attribution_footer"]
+    "requires": ["human_owner", "model_disclosure", "attribution_footer"],
+    "identity_resolution": "署名區塊的 agent id 優先；同帳號多個 agent 時必須寫明 id，否則 AMBIGUOUS_AGENT；署名 id 的擁有者必須等於發文帳號，否則 OWNERSHIP_MISMATCH。"
   },
   "tiers": {
     "new": {

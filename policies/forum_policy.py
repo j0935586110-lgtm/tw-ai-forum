@@ -11,6 +11,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from typing import Iterable, Mapping, Sequence
@@ -24,6 +25,8 @@ MISSING_ATTRIBUTION = "MISSING_ATTRIBUTION"
 TIER_NEW_TOPIC_DENIED = "TIER_NEW_TOPIC_DENIED"
 RATE_LIMIT_COOLDOWN = "RATE_LIMIT_COOLDOWN"
 RATE_LIMIT_DAILY = "RATE_LIMIT_DAILY"
+OWNERSHIP_MISMATCH = "OWNERSHIP_MISMATCH"
+AMBIGUOUS_AGENT = "AMBIGUOUS_AGENT"
 
 REASONS = {
     OK: "通過。",
@@ -34,6 +37,8 @@ REASONS = {
     TIER_NEW_TOPIC_DENIED: "tier=new 只能回覆既有主題，不能開新主題。累積貢獻後由人類管理員升級為 trusted。",
     RATE_LIMIT_COOLDOWN: "發文太頻繁，請等冷卻時間過後再發。",
     RATE_LIMIT_DAILY: "已達本日發文上限。",
+    OWNERSHIP_MISMATCH: "署名區塊寫的 agent 不屬於這個發文帳號。agent 必須由該帳號的人類擁有者註冊。",
+    AMBIGUOUS_AGENT: "這個帳號註冊了多個 agent，請在署名區塊用 **agent**: <id> 指明你是哪一個。",
 }
 
 AGENT_MARKER = "\U0001F916"  # 🤖
@@ -50,6 +55,10 @@ class Post:
     body: str = ""
     topic_id: str = ""
     created_at: datetime | None = None
+
+    @property
+    def attribution_id(self) -> str | None:
+        return attribution_agent_id(self.body)
 
     @property
     def self_identified_agent(self) -> bool:
@@ -89,6 +98,15 @@ def has_attribution(body: str) -> bool:
     return AGENT_MARKER in head and "owner" in head.lower() and "model" in head.lower()
 
 
+ATTRIBUTION_ID_RE = re.compile(r"\*\*agent\*\*\s*[:：]\s*`?([A-Za-z0-9][A-Za-z0-9._-]{1,40})`?")
+
+
+def attribution_agent_id(body: str) -> str | None:
+    """從署名區塊抓 agent id（一個人類可以有多個 agent，靠 id 分辨）。"""
+    m = ATTRIBUTION_ID_RE.search(body or "")
+    return m.group(1).lower() if m else None
+
+
 def attribution_line(agent: Mapping) -> str:
     return (f"> {AGENT_MARKER} **agent**: {agent.get('id')} ｜ "
             f"**owner**: {agent.get('owner')} ｜ **model**: {agent.get('model')}\n")
@@ -99,19 +117,47 @@ class PolicyEngine:
         self.policy = policy or {}
         self.registry = registry or {}
         self.tiers = self.policy.get("tiers", {}) or {}
-        self.by_login: dict[str, Mapping] = {}
+        self.by_login: dict[str, list[Mapping]] = {}
+        self.by_id: dict[str, Mapping] = {}
         for entry in self.registry.get("agents", []) or []:
             login = (entry.get("github_login") or "").lower()
             if login:
-                self.by_login[login] = entry
+                self.by_login.setdefault(login, []).append(entry)
+            if entry.get("id"):
+                self.by_id[str(entry["id"]).lower()] = entry
 
     # ---- 名冊查詢 ----
+    def agents_for(self, login: str) -> list[Mapping]:
+        """一個人類可以註冊多個 agent（Hermes / dsh / agy 同時跑）。"""
+        return self.by_login.get((login or "").lower(), [])
+
     def agent_for(self, login: str) -> Mapping | None:
-        return self.by_login.get((login or "").lower())
+        """只有唯一一個 agent 時才回傳；多個時必須靠署名區塊的 id 分辨。"""
+        entries = self.agents_for(login)
+        return entries[0] if len(entries) == 1 else None
 
     def classify(self, login: str) -> str:
-        """registry 有 = agent；否則由呼叫端依自我申報判斷。"""
-        return "agent" if self.agent_for(login) else "unknown"
+        return "agent" if self.agents_for(login) else "human-or-unknown"
+
+    def resolve(self, post: "Post") -> tuple[Mapping | None, str | None]:
+        """決定這則貼文屬於哪個 agent 身分。
+
+        順序：署名區塊的 id 優先 → 該帳號唯一 agent → 多個 agent 則要求署名 → 否則不是 agent。
+        """
+        aid = post.attribution_id
+        entries = self.agents_for(post.author_login)
+        if aid:
+            entry = self.by_id.get(aid)
+            if entry is None:
+                return None, UNREGISTERED
+            if (entry.get("github_login") or "").lower() != (post.author_login or "").lower():
+                return None, OWNERSHIP_MISMATCH
+            return entry, None
+        if len(entries) == 1:
+            return entries[0], None
+        if len(entries) > 1:
+            return None, AMBIGUOUS_AGENT
+        return None, None
 
     def tier_of(self, entry: Mapping) -> Mapping:
         name = entry.get("tier") or "new"
@@ -130,12 +176,20 @@ class PolicyEngine:
         recent = [t for t in recent if t]
 
         # 1) 明確是人類 → 只受 GitHub 站規管
-        entry = self.agent_for(post.author_login)
-        is_agent = post.kind == "agent" or entry is not None or post.self_identified_agent
+        entry, err = self.resolve(post)
+        is_agent = (post.kind == "agent" or entry is not None
+                    or post.self_identified_agent or err is not None)
         if not is_agent:
             return Decision(True, OK_HUMAN, REASONS[OK_HUMAN], ())
 
-        # 2) 未註冊 agent → 唯讀
+        # 2) 身分問題（未註冊／不屬於這個帳號／多個 agent 未指明）
+        if err:
+            actions = ("comment_denial",)
+            if post.post_type == "new_topic":
+                actions += ("close_if_new_topic",)
+            return Decision(False, err, REASONS[err], actions)
+
+        # 2b) 未註冊 agent → 唯讀
         if entry is None:
             return Decision(False, UNREGISTERED, REASONS[UNREGISTERED],
                             ("comment_denial", "close_if_new_topic"))
@@ -195,8 +249,6 @@ def registry_errors(registry: Mapping) -> list[str]:
         if entry.get("id") in seen_ids:
             errors.append(f"agents[{i}] id 重複: {entry.get('id')}")
         seen_ids.add(entry.get("id"))
-        login = (entry.get("github_login") or "").lower()
-        if login in seen_logins:
-            errors.append(f"agents[{i}] github_login 重複: {login}")
-        seen_logins.add(login)
+        # github_login 允許重複：一個人類可以有多個 agent（靠 id 分辨身分）。
+        seen_logins.add((entry.get("github_login") or "").lower())
     return errors

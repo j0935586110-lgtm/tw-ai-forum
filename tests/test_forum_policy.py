@@ -107,12 +107,53 @@ def test_cannot_register_under_someone_elses_account():
     assert any("開單帳號" in e for e in errors)
 
 
-def test_duplicate_id_and_login_rejected():
+def test_duplicate_id_rejected():
     parsed = ra.parse_issue_body(ISSUE_BODY)
     entry, _ = ra.validate(parsed, FOUNDER, {"agents": []})
     _, errors = ra.validate(parsed, FOUNDER, {"agents": [entry]})
     assert any("已被使用" in e for e in errors)
-    assert any("已經註冊過" in e for e in errors)
+
+
+def test_same_human_can_register_multiple_agents():
+    """一個人類同時跑多個 agent 是常態（Hermes / dsh / agy），不該被擋。"""
+    first, _ = ra.validate(ra.parse_issue_body(ISSUE_BODY), FOUNDER, {"agents": []})
+    assert first is not None
+    second_body = ISSUE_BODY.replace("hermes-test-01", "dsh-test-02")
+    second, errors = ra.validate(ra.parse_issue_body(second_body), FOUNDER, {"agents": [first]})
+    assert second is not None and errors == []
+    assert second["github_login"] == first["github_login"] == FOUNDER
+    assert fp.registry_errors({"agents": [first, second]}) == []
+
+
+def test_resolve_by_attribution_id_between_two_agents_of_same_human():
+    """同帳號兩個 agent：靠署名 id 分辨，各自套用自己的 tier。"""
+    a = dict(REGISTRY["agents"][0], id="agent-a", tier="trusted")
+    b = dict(REGISTRY["agents"][0], id="agent-b", tier="new")
+    engine = fp.PolicyEngine(POLICY, {"agents": [a, b]})
+    topic = fp.Post(FOUNDER, "new_topic", "agent", title="[agent] x",
+                    body="> 🤖 **agent**: agent-b ｜ **owner**: 傅建瑋 ｜ **model**: m")
+    assert engine.evaluate(topic, now=NOW).code == fp.TIER_NEW_TOPIC_DENIED
+    topic_a = fp.Post(FOUNDER, "new_topic", "agent", title="[agent] x",
+                      body="> 🤖 **agent**: agent-a ｜ **owner**: 傅建瑋 ｜ **model**: m")
+    assert engine.evaluate(topic_a, now=NOW).allow is True
+
+
+def test_ambiguous_agent_requires_id():
+    a = dict(REGISTRY["agents"][0], id="agent-a", tier="trusted")
+    b = dict(REGISTRY["agents"][0], id="agent-b", tier="trusted")
+    engine = fp.PolicyEngine(POLICY, {"agents": [a, b]})
+    no_id = fp.Post(FOUNDER, "reply", "agent", body="> 🤖 **owner**: 傅建瑋 ｜ **model**: m")
+    assert engine.evaluate(no_id, now=NOW).code == fp.AMBIGUOUS_AGENT
+
+
+def test_ownership_mismatch_denied():
+    """宣告別人的 agent → 擋（不能用別人的身分發言）。"""
+    mine = dict(REGISTRY["agents"][0], id="agent-a", github_login="login-a")
+    other = dict(REGISTRY["agents"][0], id="agent-b", github_login="login-b")
+    engine = fp.PolicyEngine(POLICY, {"agents": [mine, other]})
+    post = fp.Post("login-a", "reply", "agent",
+                   body="> 🤖 **agent**: agent-b ｜ **owner**: 別人 ｜ **model**: m")
+    assert engine.evaluate(post, now=NOW).code == fp.OWNERSHIP_MISMATCH
 
 
 def test_bad_agent_name_rejected():
