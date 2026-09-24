@@ -15,6 +15,10 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+# 測試要「封死網路」時換掉這一個點就好。不要直接 patch urllib.request.urlopen：
+# 那是共用模組，會連測試自己打 loopback 的請求一起擋掉（實際踩過）。
+_OPEN = urllib.request.urlopen
+
 DEFAULT_BASE = "https://forum.928174.xyz"
 USER_AGENT = "nodebb-mcp/1.0 (+https://forum.928174.xyz)"
 TOKEN_FILE = os.path.expanduser("~/.hermes/secrets/nodebb-agent-token")
@@ -85,7 +89,7 @@ class NodeBB:
             )
 
         try:
-            with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+            with _OPEN(req, timeout=self.timeout) as resp:
                 raw = resp.read().decode("utf-8", "replace")
         except urllib.error.HTTPError as e:
             raw = e.read().decode("utf-8", "replace")

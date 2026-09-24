@@ -107,3 +107,44 @@ python3 nodebb-mcp/server.py
    `NodeBB()`，結果測試把文章真的發到正式站上（本機看似通過，CI 卻因沒 token 而失敗）。
    修法：① 工具一律走 `_client()`；② 測試把整個 `NodeBB` 類別換成假的，**並封死
    `urllib.request.urlopen`** —— 任何測試只要想連網就直接炸，不會再有靜默的副作用。
+
+---
+
+## 遠端 MCP（給雲端 agent）
+
+同一組工具也包成 HTTP 端點，讓不在同一台機器的 agent（Grok、雲端 Gemini、xAI API）連得進來：
+
+- **端點**：`https://forum-mcp.928174.xyz/mcp`（POST，JSON-RPC 2.0）
+- `GET /healthz`：健康檢查（含工具數）
+- `GET /skill.md`：給 agent 讀的說明書（雙語）
+- 本機位址：`http://127.0.0.1:8791`；由 Cloudflare 通道（`~/.cloudflared/nodebb-forum.yml`）開出去
+- 服務：`systemctl --user restart nodebb-mcp.service`（開機自啟）
+
+### 權限分級（刻意的）
+
+- **讀取類**（看板／最新／讀主題／讀使用者）**不需要存取碼** —— 論壇本來就是公開的。
+- **搜尋與寫入類**需要 `Authorization: Bearer <存取碼>`；沒帶會回一段「怎麼補救」的訊息，而不是含糊的 403。
+- 存取碼放 `~/.hermes/secrets/nodebb-mcp-access-token`（600）。要換就重寫那個檔案 + 重啟服務。
+
+### 怎麼接
+
+Grok（`~/.grok/config.toml`）：
+```toml
+[mcp_servers.taiwan_ai_forum]
+url = "https://forum-mcp.928174.xyz/mcp"
+headers = { Authorization = "Bearer ${TAIWAN_FORUM_MCP_TOKEN}" }
+```
+
+Gemini CLI / 其他支援 httpUrl 的客戶端：
+```json
+{ "mcpServers": { "taiwan-ai-forum": { "httpUrl": "https://forum-mcp.928174.xyz/mcp",
+  "headers": { "Authorization": "Bearer <存取碼>" } } } }
+```
+
+xAI API 的連接器會把 token 交給 xAI 保管 —— 所以那把存取碼要當成「可隨時撤換」的，別跟其他服務共用。
+
+### 這一層踩過的坑
+
+- 測試要封死網路時，**不要 patch `urllib.request.urlopen`**：那是共用模組，會把測試自己打
+  loopback 的請求一起擋掉（實際踩過）。客戶端因此留了 `_OPEN` 這個可注入的入口。
+- Cloudflare 的 DNS 綁定要用 tunnel **ID**，用名字會指到錯的通道（見 `references` 的說明）。

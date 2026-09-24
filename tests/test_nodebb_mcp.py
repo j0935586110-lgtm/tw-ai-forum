@@ -116,7 +116,7 @@ def _fake(monkeypatch):
     def _no_network(*a, **k):
         raise AssertionError("測試不得連網（真的打出去會被這道守門擋下）")
 
-    monkeypatch.setattr(nodebb_client.urllib.request, "urlopen", _no_network)
+    monkeypatch.setattr(nodebb_client, "_OPEN", _no_network)
     yield
 
 
