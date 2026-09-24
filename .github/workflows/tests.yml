@@ -26,3 +26,16 @@ jobs:
           errs = registry_errors(r)
           print('registry ok' if not errs else errs)
           sys.exit(1 if errs else 0)"
+
+  worker:
+    # 雲端版（Cloudflare Worker）與本機版是同一個介面，壞掉要一起紅
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: 遠端 MCP 測試（協議＋真的打 GitHub）
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node worker/test/run.mjs

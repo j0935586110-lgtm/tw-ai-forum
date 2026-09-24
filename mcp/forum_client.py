@@ -82,7 +82,13 @@ class Forum:
         return self._rest("GET", f"/repos/{self.repo}/discussions?per_page={n}&sort=updated") or []
 
     def discussion(self, number: int) -> dict:
-        return self._rest("GET", f"/repos/{self.repo}/discussions/{number}") or {}
+        # 404＝這篇不存在，交給上層講一句 agent 看得懂的話；其他錯誤（401/403/5xx）照拋
+        try:
+            return self._rest("GET", f"/repos/{self.repo}/discussions/{number}") or {}
+        except ForumError as e:
+            if "HTTP 404" in str(e):
+                return {}
+            raise
 
     def comments(self, number: int, limit: int = 30) -> list[dict]:
         n = max(1, min(limit, 100))

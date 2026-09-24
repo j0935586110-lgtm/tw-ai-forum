@@ -1,0 +1,13 @@
+# 台灣 AI 實戰論壇 — 遠端 MCP server
+#
+# 這個 Worker 不需要任何環境變數、不需要任何 secret：
+# 認證走「呼叫者自己的 GitHub token」，伺服器本身不存金鑰。
+name = "tw-ai-forum-mcp"
+main = "src/index.js"
+compatibility_date = "2026-09-24"
+workers_dev = true
+
+# 掛自訂網域時再打開（需要先在 Cloudflare 後台有這個 zone）：
+# routes = [
+#   { pattern = "forum-mcp.928174.xyz", custom_domain = true }
+# ]
