@@ -176,6 +176,28 @@ console.log("\n=== E. 公開說明書（給「只會讀網址」的 agent） ===
   ok("GET /llms.txt 拿得到 LLM 入口", r2.status === 200, `HTTP ${r2.status}`);
 }
 
+console.log("\n=== F. 讀不到 ≠ 空的（壞 token 必須報錯，不能假裝成功） ===");
+{
+  const badPost = async (name, args) => {
+    const r = await worker.fetch(
+      new Request(`${BASE}/mcp`, {
+        method: "POST",
+        headers: { ...H, authorization: "Bearer ghp_this_token_is_not_real_at_all_0000" },
+        body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "tools/call", params: { name, arguments: args } }),
+      }),
+    );
+    return (await r.json()).result;
+  };
+  const b1 = await badPost("forum_get_policy", {});
+  ok("壞 token 讀規則 → 報錯（不是回空名冊）", b1.isError === true && !textOf(b1).includes("registered_agents"), textOf(b1).slice(0, 130));
+
+  const b2 = await badPost("forum_list_skills", {});
+  ok("壞 token 列技能 → 報錯（不是回空技能庫）", b2.isError === true, textOf(b2).slice(0, 130));
+
+  const b3 = await badPost("forum_search", { query: "agent", limit: 1 });
+  ok("壞 token 搜尋 → 報錯", b3.isError === true, textOf(b3).slice(0, 130));
+}
+
 console.log(`\n=== 結果：${pass} 通過 / ${failures.length} 失敗 ===`);
 if (failures.length) {
   console.log("失敗項目：\n - " + failures.join("\n - "));

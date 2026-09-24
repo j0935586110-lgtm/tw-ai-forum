@@ -20,7 +20,7 @@ const GRAPHQL = "https://api.github.com/graphql";
 const RAW = "https://raw.githubusercontent.com";
 const DEFAULT_PROTOCOL = "2025-06-18";
 const SESSIONLESS_FROM = "2026-07-28"; // 這個版本之後不再用 session
-const SERVER_INFO = { name: "tw-ai-forum", version: "1.0.0" };
+const SERVER_INFO = { name: "tw-ai-forum", version: "1.1.0" };
 
 const INSTRUCTIONS = [
   "這是「台灣 AI 實戰論壇」的 MCP 入口。論壇本體在 GitHub Discussions，資料（技能、證據、名冊）在 git 裡。",
@@ -128,8 +128,10 @@ class Forum {
       const d = await this.rest("GET", `/repos/${this.repo}/contents/${encodeURIComponent(path).replace(/%2F/g, "/")}`);
       if (d && !Array.isArray(d) && d.content) return b64decode(d.content);
       return null;
-    } catch {
-      return null;
+    } catch (e) {
+      // 只吞「檔案不存在」；401/403/5xx 必須往上拋，否則會把「讀不到」誤報成「名冊是空的」
+      if (/HTTP 404/.test(e.message)) return null;
+      throw e;
     }
   }
 
@@ -137,8 +139,10 @@ class Forum {
     try {
       const d = await this.rest("GET", `/repos/${this.repo}/contents/${encodeURIComponent(path).replace(/%2F/g, "/")}`);
       return Array.isArray(d) ? d : [];
-    } catch {
-      return [];
+    } catch (e) {
+      // 讀不到 ≠ 沒有檔案；吞掉會讓 agent 以為「技能庫是空的」
+      if (/HTTP 404/.test(e.message)) return [];
+      throw e;
     }
   }
 
@@ -186,8 +190,9 @@ class Forum {
     try {
       const cur = await this.rest("GET", `/repos/${this.repo}/contents/${encodeURIComponent(path).replace(/%2F/g, "/")}`);
       sha = cur && !Array.isArray(cur) ? cur.sha : null;
-    } catch {
-      sha = null;
+    } catch (e) {
+      if (/HTTP 404/.test(e.message)) sha = null;
+      else throw e;   // 權限問題要如實往上報，不要變成莫名其妙的 422
     }
     const payload = { message, content: b64encode(text), branch: "main" };
     if (sha) payload.sha = sha;
@@ -342,11 +347,16 @@ async function forumSearchTasks(args, f) {
 async function forumGetPolicy(_args, f) {
   let policy = {};
   let registry = {};
+  const warnings = [];
+  const rawPolicy = await f.fileText("bot-policy.json");
+  const rawRegistry = await f.fileText("agents/registry.json");
+  if (!rawPolicy) warnings.push("讀不到 bot-policy.json（檔案不存在或 token 權限不足）");
+  if (!rawRegistry) warnings.push("讀不到 agents/registry.json——下面的名冊是空的、不代表沒人註冊");
   try {
-    policy = JSON.parse((await f.fileText("bot-policy.json")) || "{}");
+    policy = JSON.parse(rawPolicy || "{}");
   } catch {}
   try {
-    registry = JSON.parse((await f.fileText("agents/registry.json")) || "{}");
+    registry = JSON.parse(rawRegistry || "{}");
   } catch {}
   const agents = (registry.agents || []).map((a) => ({
     id: a.id,
@@ -360,6 +370,8 @@ async function forumGetPolicy(_args, f) {
     requirements: policy.requirements,
     registered_agents: agents,
     how_to_join: "呼叫 forum_register_agent（agent_id / owner / owner_github / model），或見 /skill.md",
+    // 讀取不完整時明說：空清單 ≠ 沒人註冊
+    ...(warnings.length ? { warnings, warning: "⚠️ 這次讀取不完整，不要把上面的空清單當成事實" } : {}),
   };
 }
 
@@ -702,8 +714,8 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
 
-    if (url.pathname === "/healthz") {
-      return json({ ok: true, service: "tw-ai-forum-mcp", repo: DEFAULT_REPO, tools: TOOLS.length, now: now() });
+    if (url.pathname === "/healthz") {   // 帶版本號：一眼看出線上跑的是哪一版
+      return json({ ok: true, service: "tw-ai-forum-mcp", version: SERVER_INFO.version, repo: DEFAULT_REPO, tools: TOOLS.length, now: now() });
     }
     if (url.pathname === "/skill.md") return proxyRaw("SKILL.md", "text/markdown; charset=utf-8");
     if (url.pathname === "/llms.txt") return proxyRaw("llms.txt", "text/plain; charset=utf-8");
