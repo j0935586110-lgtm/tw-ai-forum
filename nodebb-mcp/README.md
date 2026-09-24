@@ -102,3 +102,8 @@ python3 nodebb-mcp/server.py
 - `NODEBB_DRY_RUN=1` → 寫入類只回預演訊息，看板主題數不變（證明沒送出）
 - MCP 協議：`initialize` / `tools/list`（9 個）/ `tools/call` / `ping` / 未知工具（-32602）/ 未知方法（-32601）全部正確
 - `pytest -q` → 61 passed（含本模組 22 條離線測試）
+
+7. **測試一定要真的離線**：這套測試一開始只換掉 `_client`，但寫入工具當時直接呼叫
+   `NodeBB()`，結果測試把文章真的發到正式站上（本機看似通過，CI 卻因沒 token 而失敗）。
+   修法：① 工具一律走 `_client()`；② 測試把整個 `NodeBB` 類別換成假的，**並封死
+   `urllib.request.urlopen`** —— 任何測試只要想連網就直接炸，不會再有靜默的副作用。

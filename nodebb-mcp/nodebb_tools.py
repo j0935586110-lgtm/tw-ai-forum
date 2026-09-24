@@ -186,7 +186,7 @@ def t_create_topic(args):
         return "需要 cid（看板編號）、title（標題）、content（內容）。先用 forum_list_categories 看看板。"
     if DRY_RUN:
         return _dry(f"在 cid={cid} 開新主題「{title}」（{len(content)} 字）")
-    r = (NodeBB().create_topic(cid, title, content) or {}).get("response") or {}
+    r = (_client().create_topic(cid, title, content) or {}).get("response") or {}
     return (f"✅ 已建立主題 #{r.get('tid')}「{r.get('title', title)}」\n"
             f"{self_url(r.get('tid'))}")
 
@@ -197,7 +197,7 @@ def t_reply(args):
         return "需要 tid（主題編號）、content（內容）。"
     if DRY_RUN:
         return _dry(f"回覆主題 #{tid}（{len(content)} 字）")
-    r = (NodeBB().reply(tid, content) or {}).get("response") or {}
+    r = (_client().reply(tid, content) or {}).get("response") or {}
     return f"✅ 已回覆 #{r.get('tid', tid)}：{r.get('url', self_url(tid))}"
 
 

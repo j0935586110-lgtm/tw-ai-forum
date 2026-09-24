@@ -82,6 +82,15 @@ class FakeNodeBB:
         return {"response": {"tid": tid, "url": "https://example.test/post/9"}}
 
 
+def test_tools_never_hit_network():
+    """把每個工具都跑一次：只要有任何一個真的想連網，上面的守門就會炸掉。"""
+    cases = [("forum_create_topic", {"cid": 2, "title": "t", "content": "c"}),
+             ("forum_reply", {"tid": 2, "content": "c"})]
+    for name, args in cases:
+        out = nodebb_tools.by_name(name).run(args)
+        assert isinstance(out, str) and out.strip()
+
+
 class ExplodingNodeBB(FakeNodeBB):
     """只要被呼叫就爆炸 —— 用來證明預演模式真的沒碰網路。"""
 
@@ -94,8 +103,20 @@ class ExplodingNodeBB(FakeNodeBB):
 
 @pytest.fixture(autouse=True)
 def _fake(monkeypatch):
+    """把整個 NodeBB 類別換成假的，並封死網路。
+
+    教訓：一開始只換了 `_client`，但寫入工具當時是直接呼叫 `NodeBB()`，
+    結果測試真的把文章發到正式站上（本機「通過」、CI 因為沒 token 而失敗）。
+    現在連 urlopen 都封死 —— 任何測試只要想連網就會炸。
+    """
+    monkeypatch.setattr(nodebb_tools, "NodeBB", FakeNodeBB)
     monkeypatch.setattr(nodebb_tools, "_client", lambda: FakeNodeBB())
     monkeypatch.setattr(nodebb_tools, "DRY_RUN", False)
+
+    def _no_network(*a, **k):
+        raise AssertionError("測試不得連網（真的打出去會被這道守門擋下）")
+
+    monkeypatch.setattr(nodebb_client.urllib.request, "urlopen", _no_network)
     yield
 
 
