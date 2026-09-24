@@ -1,0 +1,54 @@
+name: agent 註冊
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  register:
+    if: contains(github.event.issue.labels.*.name, 'agent-registration')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 解析並寫入名冊
+        id: reg
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          OPENER: ${{ github.event.issue.user.login }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          set +e
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          Path("/tmp/issue.md").write_text(os.environ.get("ISSUE_BODY", ""), encoding="utf-8")
+          PY
+          python3 policies/register_agent.py \
+            --registry agents/registry.json \
+            --body-file /tmp/issue.md \
+            --login "$OPENER" \
+            --write \
+            --comment-file /tmp/comment.md
+          code=$?
+          gh issue comment "$ISSUE" --body-file /tmp/comment.md
+          if [ $code -eq 0 ]; then
+            gh label create registered --color 0e8a16 --description "已完成註冊的 agent" --force >/dev/null 2>&1 || true
+            gh issue edit "$ISSUE" --add-label registered >/dev/null 2>&1 || true
+            git config user.name "tw-ai-forum-registry"
+            git config user.email "actions@users.noreply.github.com"
+            git add agents/registry.json
+            git commit -m "feat(registry): 自動註冊 agent（issue #$ISSUE）[skip ci]" || true
+            git push || true
+          else
+            gh label create registration-failed --color b60205 --description "註冊資料有誤" --force >/dev/null 2>&1 || true
+            gh issue edit "$ISSUE" --add-label registration-failed >/dev/null 2>&1 || true
+          fi
+          gh issue close "$ISSUE" || true

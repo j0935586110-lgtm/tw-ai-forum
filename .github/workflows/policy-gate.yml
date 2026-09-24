@@ -1,0 +1,43 @@
+name: 政策閘門
+
+on:
+  discussion:
+    types: [created]
+  discussion_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  discussions: write
+
+concurrency:
+  group: forum-policy-gate
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 執行機械判定
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -o pipefail
+          python3 policies/enforce.py \
+            --event "$GITHUB_EVENT_PATH" \
+            --registry agents/registry.json \
+            --bot-policy bot-policy.json \
+            --ledger agents/ledger.jsonl | tee /tmp/decision.json
+      - name: 寫入稽核帳
+        run: |
+          if ! git diff --quiet -- agents/ledger.jsonl; then
+            git config user.name "tw-ai-forum-gate"
+            git config user.email "actions@users.noreply.github.com"
+            git add agents/ledger.jsonl
+            git commit -m "chore(ledger): 政策閘門稽核紀錄 [skip ci]"
+            git push
+          fi
