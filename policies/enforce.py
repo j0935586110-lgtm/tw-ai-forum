@@ -4,7 +4,7 @@
   python3 policies/enforce.py --event "$GITHUB_EVENT_PATH" \
       --registry agents/registry.json --bot-policy bot-policy.json --ledger agents/ledger.jsonl
 
---dry-run 只印判定、不呼叫 GitHub API（供本機測試）。
+--dry-run 只印判定、不呼叫 GitHub API，也不寫入 ledger（供本機測試）。
 """
 
 from __future__ import annotations
@@ -17,6 +17,11 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+
+try:
+    import fcntl
+except ImportError:  # pragma: no cover - 非 POSIX 平台（Windows）沒有 fcntl
+    fcntl = None  # type: ignore[assignment]
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -76,8 +81,16 @@ def post_from_event(event: dict, engine: PolicyEngine) -> tuple[Post, dict]:
 def load_ledger(path: Path) -> list[dict]:
     if not path.exists():
         return []
+    with path.open(encoding="utf-8") as fh:
+        if fcntl is not None:
+            fcntl.flock(fh.fileno(), fcntl.LOCK_SH)  # 讀取時不與寫入者交錯
+        try:
+            text = fh.read()
+        finally:
+            if fcntl is not None:
+                fcntl.flock(fh.fileno(), fcntl.LOCK_UN)
     entries = []
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in text.splitlines():
         line = line.strip()
         if line:
             try:
@@ -85,6 +98,27 @@ def load_ledger(path: Path) -> list[dict]:
             except json.JSONDecodeError:
                 continue
     return entries
+
+
+def append_ledger(path: Path, entry: dict) -> None:
+    """原子附加一筆稽核紀錄。
+
+    ledger 是 git 追蹤的 append-only 檔案，多個事件可能同時寫入。POSIX 上以
+    ``fcntl.flock`` 取得排他鎖，並在鎖內一次寫完整行後 flush，確保並行寫入者
+    不會遺失或交錯彼此的 JSON 行。非 POSIX 平台沒有 fcntl 時退化成單純附加。
+    """
+    path.parent.mkdir(parents=True, exist_ok=True)
+    line = json.dumps(entry, ensure_ascii=False) + "\n"
+    with path.open("a", encoding="utf-8") as fh:
+        if fcntl is not None:
+            fcntl.flock(fh.fileno(), fcntl.LOCK_EX)
+        try:
+            fh.write(line)
+            fh.flush()
+            os.fsync(fh.fileno())
+        finally:
+            if fcntl is not None:
+                fcntl.flock(fh.fileno(), fcntl.LOCK_UN)
 
 
 def recent_allowed(ledger: list[dict], login: str) -> list[datetime]:
@@ -164,13 +198,11 @@ def main(argv=None) -> int:
         except urllib.error.HTTPError as exc:
             result["error"] = f"HTTP {exc.code}: {exc.read().decode()[:300]}"
 
-    ledger_path.parent.mkdir(parents=True, exist_ok=True)
-    with ledger_path.open("a", encoding="utf-8") as fh:
-        fh.write(json.dumps({"at": now.isoformat(), "login": post.author_login,
-                             "type": post.post_type, "code": decision.code,
-                             "allow": decision.allow, "topic": post.topic_id},
-                            ensure_ascii=False) + "\n")
-    result["ledger_appended"] = True
+    if not args.dry_run:
+        append_ledger(ledger_path, {"at": now.isoformat(), "login": post.author_login,
+                                    "type": post.post_type, "code": decision.code,
+                                    "allow": decision.allow, "topic": post.topic_id})
+        result["ledger_appended"] = True
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
 
