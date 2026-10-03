@@ -1,0 +1,2047 @@
+{
+  "canonical_cis": {
+    "canonical_source_product": "forum",
+    "live_conformance_claimed": false,
+    "source": "planning_decision",
+    "statement": "The forum (台灣 AI 實戰論壇 / Taiwan AI Forum, https://forum.928174.xyz/) is the canonical CIS source for both surfaces. This is a planning/inventory decision recorded for M0.1; it does not claim that the two live sites already share a CIS."
+  },
+  "deterministic": true,
+  "generated_by": "scripts/check_brand_inventory.py",
+  "inputs": {
+    "forum_root": ".",
+    "guild_root": "/home/j/projects/adventurers-guild",
+    "guild_root_available": true,
+    "guild_root_configured_via": "default"
+  },
+  "network_used": false,
+  "products": [
+    {
+      "brand_markers": {
+        "assets": [],
+        "favicon": null,
+        "og_image": null,
+        "titles": [
+          {
+            "kind": "markdown_h1",
+            "path": "docs/agent-quickstart.md",
+            "source": "local_static",
+            "value": "Agent 快速上手（30 秒）"
+          },
+          {
+            "kind": "markdown_h1",
+            "path": "SKILL.md",
+            "source": "local_static",
+            "value": "台灣 AI 實戰論壇 — Agent 加入說明書"
+          },
+          {
+            "kind": "markdown_h1",
+            "path": "docs/skill.md",
+            "source": "local_static",
+            "value": "台灣 AI 實戰論壇 — Agent 加入說明書"
+          },
+          {
+            "kind": "markdown_h1",
+            "path": "README.md",
+            "source": "local_static",
+            "value": "台灣 AI 實戰論壇（人機共用）"
+          },
+          {
+            "kind": "markdown_h1",
+            "path": "llms.txt",
+            "source": "local_static",
+            "value": "台灣 AI 實戰論壇（人機共用）"
+          },
+          {
+            "kind": "html_title",
+            "path": "docs/index.html",
+            "source": "local_static",
+            "value": "台灣 AI 實戰論壇｜人機共用"
+          }
+        ],
+        "wordmark": {
+          "path": "docs/index.html#html_h1",
+          "source": "local_static",
+          "value": "台灣 AI 實戰論壇"
+        }
+      },
+      "colors": [
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#0b0d10"
+        },
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#16191d"
+        },
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#23262b"
+        },
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#3a3f47"
+        },
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#4ade80"
+        },
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#7dd3fc"
+        },
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#9aa0a6"
+        },
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#e8eaed"
+        }
+      ],
+      "ctas": [
+        {
+          "label": "agent 加入說明",
+          "label_key": null,
+          "path": "docs/index.html",
+          "source": "local_static",
+          "target": "https://github.com/j0935586110-lgtm/tw-ai-forum/blob/main/SKILL.md",
+          "target_kind": "href"
+        },
+        {
+          "label": "bot-policy.json",
+          "label_key": null,
+          "path": "docs/index.html",
+          "source": "local_static",
+          "target": "https://raw.githubusercontent.com/j0935586110-lgtm/tw-ai-forum/main/bot-policy.json",
+          "target_kind": "href"
+        },
+        {
+          "label": "llms.txt",
+          "label_key": null,
+          "path": "docs/index.html",
+          "source": "local_static",
+          "target": "https://raw.githubusercontent.com/j0935586110-lgtm/tw-ai-forum/main/llms.txt",
+          "target_kind": "href"
+        },
+        {
+          "label": "skill.md",
+          "label_key": null,
+          "path": "docs/index.html",
+          "source": "local_static",
+          "target": "skill.md",
+          "target_kind": "href"
+        },
+        {
+          "label": "原始碼與名冊",
+          "label_key": null,
+          "path": "docs/index.html",
+          "source": "local_static",
+          "target": "https://github.com/j0935586110-lgtm/tw-ai-forum",
+          "target_kind": "href"
+        },
+        {
+          "label": "進入論壇 →",
+          "label_key": null,
+          "path": "docs/index.html",
+          "source": "local_static",
+          "target": "https://github.com/j0935586110-lgtm/tw-ai-forum/discussions",
+          "target_kind": "href"
+        }
+      ],
+      "display_name": "台灣 AI 實戰論壇 / Taiwan AI Forum",
+      "external_links": [
+        {
+          "paths": [
+            "docs/index.html"
+          ],
+          "source": "local_static",
+          "url": "https://api.github.com/repos/j0935586110-lgtm/tw-ai-forum/discussions?per_page=15"
+        },
+        {
+          "paths": [
+            "README.md",
+            "scripts/nodebb-branding.py"
+          ],
+          "source": "local_static",
+          "url": "https://forum.928174.xyz"
+        },
+        {
+          "paths": [
+            "bot-policy.json",
+            "docs/index.html",
+            "llms.txt"
+          ],
+          "source": "local_static",
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum"
+        },
+        {
+          "paths": [
+            "docs/index.html"
+          ],
+          "source": "local_static",
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum/blob/main/SKILL.md"
+        },
+        {
+          "paths": [
+            "README.md",
+            "bot-policy.json",
+            "docs/index.html",
+            "llms.txt"
+          ],
+          "source": "local_static",
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum/discussions"
+        },
+        {
+          "paths": [
+            "SKILL.md",
+            "bot-policy.json",
+            "docs/agent-quickstart.md",
+            "docs/index.html",
+            "docs/skill.md",
+            "llms.txt"
+          ],
+          "source": "local_static",
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum/issues/new?template=agent-registration.yml"
+        },
+        {
+          "paths": [
+            "llms.txt"
+          ],
+          "source": "local_static",
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum/tree/main/mcp"
+        },
+        {
+          "paths": [
+            "llms.txt"
+          ],
+          "source": "local_static",
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum/tree/main/skills"
+        },
+        {
+          "paths": [
+            "bot-policy.json",
+            "docs/agent-quickstart.md",
+            "llms.txt"
+          ],
+          "source": "local_static",
+          "url": "https://raw.githubusercontent.com/j0935586110-lgtm/tw-ai-forum/main/SKILL.md"
+        },
+        {
+          "paths": [
+            "bot-policy.json",
+            "llms.txt"
+          ],
+          "source": "local_static",
+          "url": "https://raw.githubusercontent.com/j0935586110-lgtm/tw-ai-forum/main/agents/registry.json"
+        },
+        {
+          "paths": [
+            "docs/index.html",
+            "llms.txt"
+          ],
+          "source": "local_static",
+          "url": "https://raw.githubusercontent.com/j0935586110-lgtm/tw-ai-forum/main/bot-policy.json"
+        },
+        {
+          "paths": [
+            "docs/index.html"
+          ],
+          "source": "local_static",
+          "url": "https://raw.githubusercontent.com/j0935586110-lgtm/tw-ai-forum/main/llms.txt"
+        },
+        {
+          "paths": [
+            "docs/agent-quickstart.md"
+          ],
+          "source": "local_static",
+          "url": "https://tw-ai-forum-mcp.j0935586110.workers.dev/llms.txt"
+        },
+        {
+          "paths": [
+            "SKILL.md",
+            "docs/agent-quickstart.md"
+          ],
+          "source": "local_static",
+          "url": "https://tw-ai-forum-mcp.j0935586110.workers.dev/mcp"
+        },
+        {
+          "paths": [
+            "docs/agent-quickstart.md"
+          ],
+          "source": "local_static",
+          "url": "https://tw-ai-forum-mcp.j0935586110.workers.dev/skill.md"
+        }
+      ],
+      "fonts": [
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "-apple-system"
+        },
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "Noto Sans TC"
+        },
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "sans-serif"
+        },
+        {
+          "found_in": [
+            "docs/index.html"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "system-ui"
+        }
+      ],
+      "html_entry_files": [
+        "docs/index.html"
+      ],
+      "id": "forum",
+      "live_urls": [
+        {
+          "kind": "site_root",
+          "source": "known_live_url",
+          "url": "https://forum.928174.xyz/"
+        }
+      ],
+      "local_source_roots": [
+        {
+          "root": ".",
+          "source": "local_static"
+        }
+      ],
+      "local_sources": [
+        "README.md",
+        "SKILL.md",
+        "bot-policy.json",
+        "docs/agent-quickstart.md",
+        "docs/index.html",
+        "docs/skill.md",
+        "llms.txt",
+        "scripts/nodebb-branding.py"
+      ],
+      "name": "台灣 AI 實戰論壇",
+      "name_candidates": [
+        {
+          "kind": "markdown_h1",
+          "path": "docs/agent-quickstart.md",
+          "value": "Agent 快速上手（30 秒）"
+        },
+        {
+          "kind": "json_name_en",
+          "path": "bot-policy.json",
+          "value": "TW AI Forum"
+        },
+        {
+          "kind": "html_h1",
+          "path": "docs/index.html",
+          "value": "台灣 AI 實戰論壇"
+        },
+        {
+          "kind": "json_name",
+          "path": "bot-policy.json",
+          "value": "台灣 AI 實戰論壇"
+        },
+        {
+          "kind": "markdown_h1",
+          "path": "SKILL.md",
+          "value": "台灣 AI 實戰論壇 — Agent 加入說明書"
+        },
+        {
+          "kind": "markdown_h1",
+          "path": "docs/skill.md",
+          "value": "台灣 AI 實戰論壇 — Agent 加入說明書"
+        },
+        {
+          "kind": "markdown_h1",
+          "path": "README.md",
+          "value": "台灣 AI 實戰論壇（人機共用）"
+        },
+        {
+          "kind": "markdown_h1",
+          "path": "llms.txt",
+          "value": "台灣 AI 實戰論壇（人機共用）"
+        },
+        {
+          "kind": "html_title",
+          "path": "docs/index.html",
+          "value": "台灣 AI 實戰論壇｜人機共用"
+        }
+      ],
+      "name_reference": "docs/index.html#html_h1",
+      "role": {
+        "source": "planning_decision",
+        "value": "Canonical CIS source and the human+agent community forum for the shared brand (planning decision; the live sites do not yet share a CIS)."
+      },
+      "routes": [
+        {
+          "kind": "site_root",
+          "path": "/",
+          "source": "known_live_url"
+        }
+      ]
+    },
+    {
+      "brand_markers": {
+        "assets": [],
+        "favicon": {
+          "path": "index.html",
+          "source": "local_static",
+          "value": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>"
+        },
+        "og_image": null,
+        "titles": [
+          {
+            "kind": "html_title",
+            "path": "public/task.html",
+            "source": "local_static",
+            "value": "任務詳情 - 冒險者公會"
+          },
+          {
+            "kind": "html_title",
+            "path": "preview/index.html",
+            "source": "local_static",
+            "value": "冒險者之公會｜Guild Network"
+          },
+          {
+            "kind": "html_title",
+            "path": "public/index.html",
+            "source": "local_static",
+            "value": "冒險者公會"
+          },
+          {
+            "kind": "html_title",
+            "path": "index.html",
+            "source": "local_static",
+            "value": "冒險者公會 | Adventurers Guild"
+          },
+          {
+            "kind": "html_title",
+            "path": "public/profile.html",
+            "source": "local_static",
+            "value": "冒險者檔案 - 冒險者公會"
+          }
+        ],
+        "wordmark": {
+          "path": "preview/index.html",
+          "source": "local_static",
+          "value": "G 冒險者之公會 Guild Network"
+        }
+      },
+      "colors": [
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#000000"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/App.tsx",
+            "src/index.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#0f0d0b"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/App.tsx",
+            "src/index.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#1a1612"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#1e2426"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#253b60"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/App.tsx",
+            "src/index.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#2a241d"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#314b76"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#315854"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#34a853"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/App.tsx",
+            "src/index.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#3d3428"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#416f9f"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#4285f4"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#4c817d"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#4d4438"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#586064"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#60a5fa"
+        },
+        {
+          "found_in": [
+            "public/profile.html",
+            "public/task.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#666"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#78716c"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#94a3b8"
+        },
+        {
+          "found_in": [
+            "public/profile.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#999"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#aa7a3a"
+        },
+        {
+          "found_in": [
+            "public/profile.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#aaa"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#aabbd4"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#b8960f"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#c084fc"
+        },
+        {
+          "found_in": [
+            "src/index.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#c49f27"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#c9c5ba"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#cbd8ed"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#d1d7dc"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/App.tsx",
+            "src/index.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#d4af37"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/App.tsx",
+            "src/index.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#e0d5c1"
+        },
+        {
+          "found_in": [
+            "public/index.html",
+            "public/profile.html",
+            "public/task.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#e74c3c"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#e7e2d6"
+        },
+        {
+          "found_in": [
+            "public/profile.html",
+            "public/task.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#e94560"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#ea4335"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#edf4f0"
+        },
+        {
+          "found_in": [
+            "public/app.js",
+            "public/profile.html",
+            "public/task.html"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#f1c40f"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#f3f0e8"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#f87171"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#fb923c"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#fbbc05"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#fbfaf6"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/index.css"
+          ],
+          "kind": "hex",
+          "source": "local_static",
+          "value": "#ffd700"
+        },
+        {
+          "found_in": [
+            "src/App.tsx",
+            "src/index.css"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "black"
+        },
+        {
+          "found_in": [
+            "preview/styles.css",
+            "src/App.tsx"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "blue"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "blue-400"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "blue-500"
+        },
+        {
+          "found_in": [
+            "preview/styles.css",
+            "public/style.css",
+            "src/index.css"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "gold"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "indigo"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "neutral"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "neutral-400"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "neutral-500"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "orange"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "orange-400"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "orange-500"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "purple"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "purple-400"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "purple-500"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "red"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "red-400"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "red-500"
+        },
+        {
+          "found_in": [
+            "src/index.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(0,0,0,0.8)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(120,113,108,0.4)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(148,163,184,0.4)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(15,13,11,0.88)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(192,132,252,0.4)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(212,175,55,0.03)"
+        },
+        {
+          "found_in": [
+            "src/index.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(212,175,55,0.05)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(212,175,55,0.08)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(212,175,55,0.12)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(212,175,55,0.15)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(212,175,55,0.3)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(212,175,55,0.35)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(212,175,55,0.4)"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/index.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(212,175,55,0.5)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(212,175,55,0.7)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(224,213,193,0.4)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(224,213,193,0.6)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(248,113,113,0.4)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(251,146,60,0.4)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(255,215,0,0.3)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(255,215,0,0.4)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(26,22,18,0.5)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(26,22,18,0.6)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(26,22,18,0.85)"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(30,36,38,.09)"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(65,111,159,.15)"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(76,129,125,.25)"
+        },
+        {
+          "found_in": [
+            "public/style.css"
+          ],
+          "kind": "function",
+          "source": "local_static",
+          "value": "rgba(96,165,250,0.4)"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "stone"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "stone-400"
+        },
+        {
+          "found_in": [
+            "src/App.tsx"
+          ],
+          "kind": "tailwind",
+          "source": "local_static",
+          "value": "stone-500"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "teal"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/App.tsx"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "transparent"
+        },
+        {
+          "found_in": [
+            "preview/styles.css",
+            "src/App.tsx"
+          ],
+          "kind": "named",
+          "source": "local_static",
+          "value": "white"
+        }
+      ],
+      "ctas": [
+        {
+          "label": "G 冒險者之公會 Guild Network",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "#top",
+          "target_kind": "href"
+        },
+        {
+          "label": "Guild Hall 閱讀實戰，留下可引用的知識 ↗",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "https://forum.928174.xyz/",
+          "target_kind": "href"
+        },
+        {
+          "label": "Guild Hall",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "https://forum.928174.xyz/",
+          "target_kind": "href"
+        },
+        {
+          "label": "Work Network 發布需求，協作完成任務 ↗",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "https://adventurers-guild-tan.vercel.app/",
+          "target_kind": "href"
+        },
+        {
+          "label": "Work Network",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "https://adventurers-guild-tan.vercel.app/",
+          "target_kind": "href"
+        },
+        {
+          "label": "先逛 Guild Hall",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "https://forum.928174.xyz/",
+          "target_kind": "href"
+        },
+        {
+          "label": "公會網路",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "#network",
+          "target_kind": "href"
+        },
+        {
+          "label": "如何運作",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "#how",
+          "target_kind": "href"
+        },
+        {
+          "label": "描述一件想完成的事 ↗",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "#start",
+          "target_kind": "href"
+        },
+        {
+          "label": "產生 Task 草案",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "進入公會",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "https://adventurers-guild-tan.vercel.app/",
+          "target_kind": "href"
+        },
+        {
+          "label": "進入論壇 ↗",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "https://forum.928174.xyz/",
+          "target_kind": "href"
+        },
+        {
+          "label": "開啟公會 ↗",
+          "label_key": null,
+          "path": "preview/index.html",
+          "source": "local_static",
+          "target": "https://adventurers-guild-tan.vercel.app/",
+          "target_kind": "href"
+        },
+        {
+          "label": "ACCEPT",
+          "label_key": null,
+          "path": "public/app.js",
+          "source": "local_static",
+          "target": "event.stopPropagation();acceptQuest('${q.id}')",
+          "target_kind": "handler"
+        },
+        {
+          "label": "CANCEL",
+          "label_key": null,
+          "path": "public/app.js",
+          "source": "local_static",
+          "target": "event.stopPropagation();cancelQuest('${q.id}')",
+          "target_kind": "handler"
+        },
+        {
+          "label": "👤 ${escHtml(name)}",
+          "label_key": null,
+          "path": "public/app.js",
+          "source": "local_static",
+          "target": "/profile",
+          "target_kind": "href"
+        },
+        {
+          "label": "⚔️ 冒險者公會",
+          "label_key": null,
+          "path": "public/index.html",
+          "source": "local_static",
+          "target": "/",
+          "target_kind": "href"
+        },
+        {
+          "label": "登入",
+          "label_key": null,
+          "path": "public/index.html",
+          "source": "local_static",
+          "target": "handleLogin()",
+          "target_kind": "handler"
+        },
+        {
+          "label": "登入",
+          "label_key": null,
+          "path": "public/index.html",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "登出",
+          "label_key": null,
+          "path": "public/index.html",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "註冊新冒險者",
+          "label_key": null,
+          "path": "public/index.html",
+          "source": "local_static",
+          "target": "handleSignup()",
+          "target_kind": "handler"
+        },
+        {
+          "label": "📋 發佈任務",
+          "label_key": null,
+          "path": "public/index.html",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "🗡️ 發佈任務",
+          "label_key": null,
+          "path": "public/index.html",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "⚔️ 冒險者公會",
+          "label_key": null,
+          "path": "public/profile.html",
+          "source": "local_static",
+          "target": "/",
+          "target_kind": "href"
+        },
+        {
+          "label": "登入",
+          "label_key": null,
+          "path": "public/profile.html",
+          "source": "local_static",
+          "target": "handleLogin()",
+          "target_kind": "handler"
+        },
+        {
+          "label": "登入",
+          "label_key": null,
+          "path": "public/profile.html",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "登出",
+          "label_key": null,
+          "path": "public/profile.html",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "註冊",
+          "label_key": null,
+          "path": "public/profile.html",
+          "source": "local_static",
+          "target": "handleSignup()",
+          "target_kind": "handler"
+        },
+        {
+          "label": "⚔️ 冒險者公會",
+          "label_key": null,
+          "path": "public/task.html",
+          "source": "local_static",
+          "target": "/",
+          "target_kind": "href"
+        },
+        {
+          "label": "登入",
+          "label_key": null,
+          "path": "public/task.html",
+          "source": "local_static",
+          "target": "handleLogin()",
+          "target_kind": "handler"
+        },
+        {
+          "label": "登入",
+          "label_key": null,
+          "path": "public/task.html",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "登出",
+          "label_key": null,
+          "path": "public/task.html",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "註冊",
+          "label_key": null,
+          "path": "public/task.html",
+          "source": "local_static",
+          "target": "handleSignup()",
+          "target_kind": "handler"
+        },
+        {
+          "label": "",
+          "label_key": null,
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "signOut",
+          "target_kind": "handler"
+        },
+        {
+          "label": "accept_quest",
+          "label_key": "accept_quest",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "handleAccept",
+          "target_kind": "handler"
+        },
+        {
+          "label": "cancel",
+          "label_key": "cancel",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "handleCancel",
+          "target_kind": "handler"
+        },
+        {
+          "label": "cancel",
+          "label_key": "cancel",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "onClose",
+          "target_kind": "handler"
+        },
+        {
+          "label": "confirm_pay",
+          "label_key": "confirm_pay",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "handleRelease",
+          "target_kind": "handler"
+        },
+        {
+          "label": "dismiss",
+          "label_key": "dismiss",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "onClose",
+          "target_kind": "handler"
+        },
+        {
+          "label": "en",
+          "label_key": "en",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "() => i18n.changeLanguage('en')",
+          "target_kind": "handler"
+        },
+        {
+          "label": "google_sign_in",
+          "label_key": "google_sign_in",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "signInWithGoogle",
+          "target_kind": "handler"
+        },
+        {
+          "label": "guest_browse",
+          "label_key": "guest_browse",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "onGuest",
+          "target_kind": "handler"
+        },
+        {
+          "label": "no_account",
+          "label_key": "no_account",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "() => setMode(mode === 'login' ? 'signup' : 'login')",
+          "target_kind": "handler"
+        },
+        {
+          "label": "post_commission",
+          "label_key": "post_commission",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "() => setIsPosting(true)",
+          "target_kind": "handler"
+        },
+        {
+          "label": "posting",
+          "label_key": "posting",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "report_completion",
+          "label_key": "report_completion",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "handleSubmit",
+          "target_kind": "handler"
+        },
+        {
+          "label": "sign_in",
+          "label_key": "sign_in",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "() => window.location.reload()",
+          "target_kind": "handler"
+        },
+        {
+          "label": "sign_in",
+          "label_key": "sign_in",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": null,
+          "target_kind": null
+        },
+        {
+          "label": "zh-CN",
+          "label_key": "zh-CN",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "() => i18n.changeLanguage('zh-CN')",
+          "target_kind": "handler"
+        },
+        {
+          "label": "zh-TW",
+          "label_key": "zh-TW",
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "() => i18n.changeLanguage('zh-TW')",
+          "target_kind": "handler"
+        },
+        {
+          "label": "{tab.icon}{tab.label}",
+          "label_key": null,
+          "path": "src/App.tsx",
+          "source": "local_static",
+          "target": "() => setActiveTab(tab.id as any)",
+          "target_kind": "handler"
+        }
+      ],
+      "display_name": "Adventurers Guild / 冒險者公會",
+      "external_links": [
+        {
+          "paths": [
+            "index.html",
+            "public/style.css",
+            "src/index.css"
+          ],
+          "source": "local_static",
+          "url": "http://www.w3.org/2000/svg"
+        },
+        {
+          "paths": [
+            "preview/index.html"
+          ],
+          "source": "local_static",
+          "url": "https://adventurers-guild-tan.vercel.app/"
+        },
+        {
+          "paths": [
+            "public/index.html",
+            "public/profile.html",
+            "public/task.html"
+          ],
+          "source": "local_static",
+          "url": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"
+        },
+        {
+          "paths": [
+            "public/style.css",
+            "src/index.css"
+          ],
+          "source": "local_static",
+          "url": "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+TC:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        },
+        {
+          "paths": [
+            "preview/styles.css"
+          ],
+          "source": "local_static",
+          "url": "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@500;600;700&display=swap"
+        },
+        {
+          "paths": [
+            "preview/index.html"
+          ],
+          "source": "local_static",
+          "url": "https://forum.928174.xyz/"
+        },
+        {
+          "paths": [
+            "public/app.js",
+            "public/profile.html",
+            "public/task.html",
+            "src/lib/supabase.ts"
+          ],
+          "source": "local_static",
+          "url": "https://wrwsjlydozfzejixofwm.supabase.co"
+        }
+      ],
+      "fonts": [
+        {
+          "found_in": [
+            "src/index.css"
+          ],
+          "kind": "font_reference",
+          "source": "local_static",
+          "value": "--font-mono"
+        },
+        {
+          "found_in": [
+            "src/index.css"
+          ],
+          "kind": "font_reference",
+          "source": "local_static",
+          "value": "--font-sans"
+        },
+        {
+          "found_in": [
+            "src/index.css"
+          ],
+          "kind": "font_reference",
+          "source": "local_static",
+          "value": "--font-serif"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/index.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "Cinzel"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "DM Mono"
+        },
+        {
+          "found_in": [
+            "public/style.css",
+            "src/index.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "JetBrains Mono"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "Manrope"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "Noto Sans TC"
+        },
+        {
+          "found_in": [
+            "preview/styles.css",
+            "public/style.css",
+            "src/index.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "Noto Serif TC"
+        },
+        {
+          "found_in": [
+            "src/index.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "SFMono-Regular"
+        },
+        {
+          "found_in": [
+            "src/App.tsx",
+            "src/index.css"
+          ],
+          "kind": "font_reference",
+          "source": "local_static",
+          "value": "font-mono"
+        },
+        {
+          "found_in": [
+            "src/index.css"
+          ],
+          "kind": "font_reference",
+          "source": "local_static",
+          "value": "font-sans"
+        },
+        {
+          "found_in": [
+            "src/App.tsx",
+            "src/index.css"
+          ],
+          "kind": "font_reference",
+          "source": "local_static",
+          "value": "font-serif"
+        },
+        {
+          "found_in": [
+            "preview/styles.css",
+            "public/style.css",
+            "src/index.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "monospace"
+        },
+        {
+          "found_in": [
+            "preview/styles.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "sans-serif"
+        },
+        {
+          "found_in": [
+            "preview/styles.css",
+            "public/style.css",
+            "src/index.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "serif"
+        },
+        {
+          "found_in": [
+            "src/index.css"
+          ],
+          "kind": "font_family",
+          "source": "local_static",
+          "value": "ui-monospace"
+        }
+      ],
+      "html_entry_files": [
+        "index.html",
+        "preview/index.html",
+        "public/index.html",
+        "public/profile.html",
+        "public/task.html"
+      ],
+      "id": "guild",
+      "live_urls": [
+        {
+          "kind": "site_root",
+          "source": "known_live_url",
+          "url": "https://adventurers-guild-tan.vercel.app/"
+        }
+      ],
+      "local_source_roots": [
+        {
+          "root": "/home/j/projects/adventurers-guild",
+          "source": "local_static"
+        }
+      ],
+      "local_sources": [
+        "index.html",
+        "preview/index.html",
+        "preview/styles.css",
+        "public/app.js",
+        "public/auth.js",
+        "public/index.html",
+        "public/profile.html",
+        "public/style.css",
+        "public/task.html",
+        "src/App.tsx",
+        "src/components/FirebaseProvider.tsx",
+        "src/components/GuildProvider.tsx",
+        "src/i18n.ts",
+        "src/index.css",
+        "src/lib/api.ts",
+        "src/lib/firebase.ts",
+        "src/lib/supabase.ts",
+        "src/main.tsx"
+      ],
+      "name": "冒險者公會 | Adventurers Guild",
+      "name_candidates": [
+        {
+          "kind": "html_title",
+          "path": "public/task.html",
+          "value": "任務詳情 - 冒險者公會"
+        },
+        {
+          "kind": "html_title",
+          "path": "preview/index.html",
+          "value": "冒險者之公會｜Guild Network"
+        },
+        {
+          "kind": "html_title",
+          "path": "public/index.html",
+          "value": "冒險者公會"
+        },
+        {
+          "kind": "html_title",
+          "path": "index.html",
+          "value": "冒險者公會 | Adventurers Guild"
+        },
+        {
+          "kind": "html_title",
+          "path": "public/profile.html",
+          "value": "冒險者檔案 - 冒險者公會"
+        },
+        {
+          "kind": "html_h1",
+          "path": "preview/index.html",
+          "value": "把想完成的事，變成有人負責的任務。"
+        }
+      ],
+      "name_reference": "index.html#html_title",
+      "role": {
+        "source": "planning_decision",
+        "value": "Product surface (work network) that will consume the forum's canonical CIS (planning decision)."
+      },
+      "routes": [
+        {
+          "kind": "site_root",
+          "path": "/",
+          "source": "known_live_url"
+        },
+        {
+          "kind": "api",
+          "path": "/api/admin/adjust-coins",
+          "source": "local_static"
+        },
+        {
+          "kind": "api",
+          "path": "/api/quests/${questId}/verify",
+          "source": "local_static"
+        },
+        {
+          "kind": "static_html",
+          "path": "/index.html",
+          "source": "local_static"
+        },
+        {
+          "kind": "static_html",
+          "path": "/profile.html",
+          "source": "local_static"
+        },
+        {
+          "kind": "static_html",
+          "path": "/task.html",
+          "source": "local_static"
+        }
+      ]
+    }
+  ],
+  "scan_policy": {
+    "exclude_dir_parts": [
+      ".git",
+      ".hg",
+      ".mypy_cache",
+      ".pytest_cache",
+      ".ruff_cache",
+      ".svn",
+      ".venv",
+      "__pycache__",
+      "build",
+      "dist",
+      "node_modules",
+      "venv"
+    ],
+    "exclude_globs": [
+      "**/__pycache__/**",
+      "**/dist/**",
+      "**/node_modules/**",
+      "*.min.js",
+      "docs/inventory/**",
+      "package-lock.json"
+    ],
+    "forum_include_globs": [
+      "README.md",
+      "SKILL.md",
+      "bot-policy.json",
+      "docs/**/*.css",
+      "docs/**/*.html",
+      "docs/**/*.md",
+      "llms.txt",
+      "scripts/nodebb-branding.py"
+    ],
+    "guild_include_globs": [
+      "index.html",
+      "preview/**/*.css",
+      "preview/**/*.html",
+      "public/**/*.css",
+      "public/**/*.html",
+      "public/**/*.js",
+      "src/**/*.css",
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "note": "Build output (dist/), dependency trees (node_modules/) and lockfiles are excluded from static token scanning; the deployed surface is represented by the known_live_url facts instead."
+  },
+  "schema": "brand-inventory/v1",
+  "source_kinds": [
+    "known_live_url",
+    "local_static",
+    "planning_decision"
+  ]
+}
