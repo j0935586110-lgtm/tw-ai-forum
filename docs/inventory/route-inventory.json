@@ -1,0 +1,782 @@
+{
+  "deterministic": true,
+  "generated_by": "scripts/check_route_inventory.py",
+  "inputs": {
+    "forum_root": ".",
+    "guild_root": "/home/j/projects/adventurers-guild",
+    "guild_root_available": true,
+    "guild_root_configured_via": "default"
+  },
+  "network_used": false,
+  "products": [
+    {
+      "display_name": "台灣 AI 實戰論壇 / Taiwan AI Forum",
+      "external_entry_points": [
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "nodebb-mcp/README.md"
+          ],
+          "url": "http://127.0.0.1:8791"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "nodebb-mcp/README.md"
+          ],
+          "url": "https://forum-mcp.928174.xyz/mcp"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "bot-policy.json",
+            "docs/index.html",
+            "llms.txt"
+          ],
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "docs/index.html"
+          ],
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum/blob/main/SKILL.md"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "README.md",
+            "bot-policy.json",
+            "docs/index.html",
+            "llms.txt"
+          ],
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum/discussions"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "SKILL.md",
+            "bot-policy.json",
+            "docs/agent-quickstart.md",
+            "docs/index.html",
+            "docs/skill.md",
+            "llms.txt"
+          ],
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum/issues/new?template=agent-registration.yml"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "llms.txt"
+          ],
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum/tree/main/mcp"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "llms.txt"
+          ],
+          "url": "https://github.com/j0935586110-lgtm/tw-ai-forum/tree/main/skills"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "bot-policy.json",
+            "docs/agent-quickstart.md",
+            "llms.txt"
+          ],
+          "url": "https://raw.githubusercontent.com/j0935586110-lgtm/tw-ai-forum/main/SKILL.md"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "bot-policy.json",
+            "llms.txt"
+          ],
+          "url": "https://raw.githubusercontent.com/j0935586110-lgtm/tw-ai-forum/main/agents/registry.json"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "docs/index.html",
+            "llms.txt"
+          ],
+          "url": "https://raw.githubusercontent.com/j0935586110-lgtm/tw-ai-forum/main/bot-policy.json"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "docs/index.html"
+          ],
+          "url": "https://raw.githubusercontent.com/j0935586110-lgtm/tw-ai-forum/main/llms.txt"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "docs/agent-quickstart.md"
+          ],
+          "url": "https://tw-ai-forum-mcp.j0935586110.workers.dev/llms.txt"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "SKILL.md",
+            "docs/agent-quickstart.md"
+          ],
+          "url": "https://tw-ai-forum-mcp.j0935586110.workers.dev/mcp"
+        },
+        {
+          "labels": [],
+          "product": "forum",
+          "source": "local_static",
+          "source_files": [
+            "docs/agent-quickstart.md"
+          ],
+          "url": "https://tw-ai-forum-mcp.j0935586110.workers.dev/skill.md"
+        }
+      ],
+      "id": "forum",
+      "known_live_url": "https://forum.928174.xyz/",
+      "local_sources": [
+        "README.md",
+        "SKILL.md",
+        "bot-policy.json",
+        "docs/agent-quickstart.md",
+        "docs/index.html",
+        "docs/skill.md",
+        "llms.txt",
+        "mcp/README.md",
+        "nodebb-mcp/README.md",
+        "nodebb-mcp/http_server.py",
+        "nodebb-mcp/live_e2e.mjs",
+        "nodebb-mcp/nodebb_client.py",
+        "scripts/nodebb-branding.py",
+        "worker/src/index.js"
+      ],
+      "router_detected": false,
+      "routes": [
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/README.md",
+          "source_files": [
+            "nodebb-mcp/README.md",
+            "nodebb-mcp/nodebb_client.py",
+            "scripts/nodebb-branding.py"
+          ],
+          "target": "/api/categories"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/README.md",
+          "source_files": [
+            "nodebb-mcp/README.md",
+            "nodebb-mcp/nodebb_client.py"
+          ],
+          "target": "/api/config"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/nodebb_client.py",
+          "source_files": [
+            "nodebb-mcp/nodebb_client.py"
+          ],
+          "target": "/api/recent"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/README.md",
+          "source_files": [
+            "nodebb-mcp/README.md",
+            "nodebb-mcp/nodebb_client.py"
+          ],
+          "target": "/api/search"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/nodebb_client.py",
+          "source_files": [
+            "nodebb-mcp/nodebb_client.py",
+            "scripts/nodebb-branding.py"
+          ],
+          "target": "/api/self"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/README.md",
+          "source_files": [
+            "nodebb-mcp/README.md",
+            "nodebb-mcp/nodebb_client.py"
+          ],
+          "target": "/api/topic/{param}"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/nodebb_client.py",
+          "source_files": [
+            "nodebb-mcp/nodebb_client.py"
+          ],
+          "target": "/api/user/{param}"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "scripts/nodebb-branding.py",
+          "source_files": [
+            "scripts/nodebb-branding.py"
+          ],
+          "target": "/api/v3/admin/settings/{param}"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "scripts/nodebb-branding.py",
+          "source_files": [
+            "scripts/nodebb-branding.py"
+          ],
+          "target": "/api/v3/categories"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "scripts/nodebb-branding.py",
+          "source_files": [
+            "scripts/nodebb-branding.py"
+          ],
+          "target": "/api/v3/categories/{param}"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/nodebb_client.py",
+          "source_files": [
+            "nodebb-mcp/nodebb_client.py",
+            "scripts/nodebb-branding.py"
+          ],
+          "target": "/api/v3/topics"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/nodebb_client.py",
+          "source_files": [
+            "nodebb-mcp/nodebb_client.py"
+          ],
+          "target": "/api/v3/topics/{param}"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "scripts/nodebb-branding.py",
+          "source_files": [
+            "scripts/nodebb-branding.py"
+          ],
+          "target": "/api/v3/topics/{param}/pin"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/README.md",
+          "source_files": [
+            "nodebb-mcp/README.md"
+          ],
+          "target": "/api/v3/utilities/login"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/http_server.py",
+          "source_files": [
+            "nodebb-mcp/http_server.py"
+          ],
+          "target": "/health"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/http_server.py",
+          "source_files": [
+            "nodebb-mcp/http_server.py",
+            "nodebb-mcp/live_e2e.mjs",
+            "worker/src/index.js"
+          ],
+          "target": "/healthz"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "nodebb-mcp/http_server.py",
+          "source_files": [
+            "nodebb-mcp/http_server.py",
+            "worker/src/index.js"
+          ],
+          "target": "/mcp"
+        },
+        {
+          "evidence": "supplied known live URL: https://forum.928174.xyz/",
+          "kind": "live_entry",
+          "product": "forum",
+          "source": "known_live_url",
+          "source_file": null,
+          "source_files": [],
+          "target": "/"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "worker/src/index.js",
+          "source_files": [
+            "worker/src/index.js"
+          ],
+          "target": "/index.html"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "SKILL.md",
+          "source_files": [
+            "SKILL.md",
+            "nodebb-mcp/http_server.py",
+            "worker/src/index.js"
+          ],
+          "target": "/llms.txt"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "SKILL.md",
+          "source_files": [
+            "SKILL.md",
+            "docs/skill.md",
+            "nodebb-mcp/http_server.py",
+            "worker/src/index.js"
+          ],
+          "target": "/skill.md"
+        },
+        {
+          "evidence": "markdown link target=\"README.md\"",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "SKILL.md",
+          "source_files": [
+            "SKILL.md",
+            "docs/skill.md"
+          ],
+          "target": "README.md"
+        },
+        {
+          "evidence": "markdown link target=\"SKILL.md\"",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "README.md",
+          "source_files": [
+            "README.md"
+          ],
+          "target": "SKILL.md"
+        },
+        {
+          "evidence": "markdown link target=\"agents/registry.json\"",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "README.md",
+          "source_files": [
+            "README.md",
+            "SKILL.md",
+            "docs/skill.md"
+          ],
+          "target": "agents/registry.json"
+        },
+        {
+          "evidence": "markdown link target=\"bot-policy.json\"",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "README.md",
+          "source_files": [
+            "README.md",
+            "SKILL.md",
+            "docs/skill.md"
+          ],
+          "target": "bot-policy.json"
+        },
+        {
+          "evidence": "markdown link target=\"docs/agent-quickstart.md\"",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "SKILL.md",
+          "source_files": [
+            "SKILL.md"
+          ],
+          "target": "docs/agent-quickstart.md"
+        },
+        {
+          "evidence": "literal HTML page file",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "docs/index.html",
+          "source_files": [
+            "docs/index.html"
+          ],
+          "target": "docs/index.html"
+        },
+        {
+          "evidence": "markdown link target=\"mcp/README.md\"",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "SKILL.md",
+          "source_files": [
+            "SKILL.md"
+          ],
+          "target": "mcp/README.md"
+        },
+        {
+          "evidence": "href=\"skill.md\"",
+          "kind": "page",
+          "product": "forum",
+          "source": "local_static",
+          "source_file": "docs/index.html",
+          "source_files": [
+            "docs/index.html"
+          ],
+          "target": "skill.md"
+        }
+      ]
+    },
+    {
+      "display_name": "Adventurers Guild / 冒險者公會",
+      "external_entry_points": [
+        {
+          "labels": [],
+          "product": "guild",
+          "source": "local_static",
+          "source_files": [
+            "preview/index.html"
+          ],
+          "url": "https://forum.928174.xyz/"
+        }
+      ],
+      "id": "guild",
+      "known_live_url": "https://adventurers-guild-tan.vercel.app/",
+      "local_sources": [
+        "index.html",
+        "package.json",
+        "preview/index.html",
+        "public/index.html",
+        "public/profile.html",
+        "public/task.html",
+        "src/App.tsx",
+        "src/components/FirebaseProvider.tsx",
+        "src/components/GuildProvider.tsx",
+        "src/i18n.ts",
+        "src/lib/api.ts",
+        "src/lib/firebase.ts",
+        "src/lib/supabase.ts",
+        "src/main.tsx",
+        "tsconfig.json",
+        "vercel.json",
+        "vite.config.ts"
+      ],
+      "router_detected": false,
+      "routes": [
+        {
+          "evidence": "form submit handler (onSubmit)",
+          "kind": "action",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "src/App.tsx",
+          "source_files": [
+            "src/App.tsx"
+          ],
+          "target": "handleSubmit"
+        },
+        {
+          "evidence": "form submit handler (onsubmit)",
+          "kind": "action",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "public/index.html",
+          "source_files": [
+            "public/index.html"
+          ],
+          "target": "postQuest(event)"
+        },
+        {
+          "evidence": "form submit handler (onSubmit)",
+          "kind": "action",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "src/App.tsx",
+          "source_files": [
+            "src/App.tsx"
+          ],
+          "target": "submit"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "src/lib/api.ts",
+          "source_files": [
+            "src/lib/api.ts"
+          ],
+          "target": "/api/admin/adjust-coins"
+        },
+        {
+          "evidence": "quoted route path literal",
+          "kind": "api",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "src/lib/api.ts",
+          "source_files": [
+            "src/lib/api.ts"
+          ],
+          "target": "/api/quests/{param}/verify"
+        },
+        {
+          "evidence": "supplied known live URL: https://adventurers-guild-tan.vercel.app/",
+          "kind": "live_entry",
+          "product": "guild",
+          "source": "known_live_url",
+          "source_file": null,
+          "source_files": [],
+          "target": "/"
+        },
+        {
+          "evidence": "href=\"/\"",
+          "kind": "page",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "public/index.html",
+          "source_files": [
+            "public/index.html",
+            "public/profile.html",
+            "public/task.html"
+          ],
+          "target": "/"
+        },
+        {
+          "evidence": "href=\"/profile\"",
+          "kind": "page",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "public/profile.html",
+          "source_files": [
+            "public/profile.html",
+            "public/task.html"
+          ],
+          "target": "/profile"
+        },
+        {
+          "evidence": "literal HTML page file",
+          "kind": "page",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "index.html",
+          "source_files": [
+            "index.html"
+          ],
+          "target": "index.html"
+        },
+        {
+          "evidence": "literal HTML page file",
+          "kind": "page",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "preview/index.html",
+          "source_files": [
+            "preview/index.html"
+          ],
+          "target": "preview/index.html"
+        },
+        {
+          "evidence": "literal HTML page file",
+          "kind": "page",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "public/index.html",
+          "source_files": [
+            "public/index.html"
+          ],
+          "target": "public/index.html"
+        },
+        {
+          "evidence": "literal HTML page file",
+          "kind": "page",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "public/profile.html",
+          "source_files": [
+            "public/profile.html"
+          ],
+          "target": "public/profile.html"
+        },
+        {
+          "evidence": "literal HTML page file",
+          "kind": "page",
+          "product": "guild",
+          "source": "local_static",
+          "source_file": "public/task.html",
+          "source_files": [
+            "public/task.html"
+          ],
+          "target": "public/task.html"
+        }
+      ]
+    }
+  ],
+  "route_kinds": [
+    "action",
+    "api",
+    "live_entry",
+    "page"
+  ],
+  "scan_policy": {
+    "excluded_dir_parts": [
+      ".git",
+      ".hg",
+      ".mypy_cache",
+      ".next",
+      ".pytest_cache",
+      ".ruff_cache",
+      ".svn",
+      ".venv",
+      "__pycache__",
+      "build",
+      "dist",
+      "node_modules",
+      "venv"
+    ],
+    "forum_code_files": [
+      "nodebb-mcp/http_server.py",
+      "nodebb-mcp/live_e2e.mjs",
+      "nodebb-mcp/nodebb_client.py",
+      "scripts/nodebb-branding.py",
+      "worker/src/index.js"
+    ],
+    "forum_config_files": [],
+    "forum_doc_files": [
+      "README.md",
+      "SKILL.md",
+      "bot-policy.json",
+      "docs/agent-quickstart.md",
+      "docs/skill.md",
+      "llms.txt",
+      "mcp/README.md",
+      "nodebb-mcp/README.md"
+    ],
+    "forum_html_files": [
+      "docs/index.html"
+    ],
+    "guild_code_files": [
+      "src/App.tsx",
+      "src/components/FirebaseProvider.tsx",
+      "src/components/GuildProvider.tsx",
+      "src/i18n.ts",
+      "src/lib/api.ts",
+      "src/lib/firebase.ts",
+      "src/lib/supabase.ts",
+      "src/main.tsx"
+    ],
+    "guild_config_files": [
+      "package.json",
+      "tsconfig.json",
+      "vercel.json",
+      "vite.config.ts"
+    ],
+    "guild_doc_files": [],
+    "guild_html_files": [
+      "index.html",
+      "preview/index.html",
+      "public/index.html",
+      "public/profile.html",
+      "public/task.html"
+    ],
+    "note": "Routes are discovered only from the files listed above plus the two supplied known live roots. Fragment links, external URLs, asset references (CSS/JS/images) and filesystem paths are never recorded as product routes; external URLs live in a separate array."
+  },
+  "schema": "route-inventory/v1",
+  "source_kinds": [
+    "known_live_url",
+    "local_static"
+  ]
+}
