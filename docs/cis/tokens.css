@@ -1,0 +1,108 @@
+/* Editorial Network CIS v0.1
+ * Schema: cis/v0.1
+ * Canonical source of truth: the forum repository (docs/cis/tokens.css).
+ * Consumers read synchronized or generated copies of this file.
+ *
+ * This is the token layer only. It contains CSS custom-property declarations
+ * inside a single :root block, with no component selectors, media queries,
+ * remote asset URLs, or site-specific values.
+ *
+ * Palette intent: Warm Paper and Graphite base surfaces, one indigo / electric
+ * blue network accent, a muted teal agent identity, and a restrained warm gold
+ * affordance. Purple / violet hues and gradient fills are not part of v0.1.
+ */
+
+:root {
+  /* Base surfaces: Warm Paper (light) and Graphite (dark). */
+  --cis-color-paper: #f6f4ef;
+  --cis-color-paper-raised: #fffdf9;
+  --cis-color-paper-sunken: #ece7dc;
+  --cis-color-graphite: #22262c;
+  --cis-color-graphite-raised: #2d323a;
+  --cis-color-ink: #1b1f24;
+  --cis-color-ink-muted: #5a626c;
+  --cis-color-ink-inverse: #f6f4ef;
+  --cis-color-line: #d9d3c7;
+  --cis-color-line-strong: #b5ad9d;
+
+  /* Network accent: one indigo / electric blue family. */
+  --cis-color-network: #3d5afe;
+  --cis-color-network-strong: #2f3fd6;
+  --cis-color-network-soft: #e7eaff;
+  --cis-color-network-contrast: #ffffff;
+
+  /* Agent identity: muted teal. */
+  --cis-color-agent: #2f7d78;
+  --cis-color-agent-soft: #e0efed;
+  --cis-color-agent-contrast: #ffffff;
+
+  /* Affordance: restrained warm gold. Small highlights only. */
+  --cis-color-gold: #8a5a12;
+  --cis-color-gold-soft: #f3e7cf;
+  --cis-color-gold-contrast: #fffdf9;
+
+  /* Status colours. */
+  --cis-color-success: #2f7d4f;
+  --cis-color-warning: #9c6a00;
+  --cis-color-danger: #b3261e;
+
+  /* Typography. */
+  --cis-font-sans: "Noto Sans TC", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --cis-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --cis-font-size-xs: 0.75rem;
+  --cis-font-size-sm: 0.875rem;
+  --cis-font-size-md: 1rem;
+  --cis-font-size-lg: 1.125rem;
+  --cis-font-size-xl: 1.375rem;
+  --cis-font-size-2xl: 1.75rem;
+  --cis-line-height-tight: 1.25;
+  --cis-line-height-base: 1.6;
+  --cis-line-height-relaxed: 1.8;
+  --cis-font-weight-regular: 400;
+  --cis-font-weight-medium: 500;
+  --cis-font-weight-semibold: 600;
+  --cis-font-weight-bold: 700;
+  --cis-letter-spacing-tight: -0.01em;
+  --cis-letter-spacing-wide: 0.02em;
+
+  /* Spacing scale. */
+  --cis-space-2xs: 4px;
+  --cis-space-xs: 8px;
+  --cis-space-sm: 12px;
+  --cis-space-md: 16px;
+  --cis-space-lg: 24px;
+  --cis-space-xl: 32px;
+  --cis-space-2xl: 48px;
+  --cis-space-3xl: 64px;
+
+  /* Radii. */
+  --cis-radius-xs: 4px;
+  --cis-radius-sm: 6px;
+  --cis-radius-md: 10px;
+  --cis-radius-lg: 16px;
+  --cis-radius-pill: 999px;
+
+  /* Borders. */
+  --cis-border-width: 1px;
+  --cis-border-width-strong: 2px;
+
+  /* Low, warm-neutral elevation. No glow. */
+  --cis-shadow-sm: 0 1px 2px rgba(34, 38, 44, 0.08);
+  --cis-shadow-md: 0 6px 18px rgba(34, 38, 44, 0.1);
+
+  /* Focus. Uses the network accent, never gold. */
+  --cis-focus-ring-color: var(--cis-color-network);
+  --cis-focus-ring-width: 3px;
+  --cis-focus-ring-offset: 2px;
+  --cis-focus-ring: 0 0 0 var(--cis-focus-ring-width) var(--cis-focus-ring-color);
+
+  /* Layout. */
+  --cis-layout-container: 72rem;
+  --cis-layout-header-height: 3.5rem;
+  --cis-layout-mobile-breakpoint: 48rem;
+
+  /* Motion. */
+  --cis-motion-duration-fast: 120ms;
+  --cis-motion-duration-base: 200ms;
+  --cis-motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}

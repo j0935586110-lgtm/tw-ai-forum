@@ -1,0 +1,186 @@
+{
+  "checks": [
+    "duplicate-token-keys",
+    "forbidden-design-tells",
+    "required-files",
+    "required-token-keys",
+    "schema-version",
+    "syntax-balance"
+  ],
+  "deterministic": true,
+  "files": [
+    "README.md",
+    "components.md",
+    "content-style.md",
+    "tokens.css"
+  ],
+  "generated_by": "scripts/check_cis.py",
+  "network_used": false,
+  "schema": "cis-manifest/v0.1",
+  "source_of_truth": "forum",
+  "token_groups": {
+    "border": [
+      "--cis-border-width",
+      "--cis-border-width-strong"
+    ],
+    "color-agent": [
+      "--cis-color-agent",
+      "--cis-color-agent-soft",
+      "--cis-color-agent-contrast"
+    ],
+    "color-base": [
+      "--cis-color-paper",
+      "--cis-color-paper-raised",
+      "--cis-color-paper-sunken",
+      "--cis-color-graphite",
+      "--cis-color-graphite-raised",
+      "--cis-color-ink",
+      "--cis-color-ink-muted",
+      "--cis-color-ink-inverse",
+      "--cis-color-line",
+      "--cis-color-line-strong"
+    ],
+    "color-gold": [
+      "--cis-color-gold",
+      "--cis-color-gold-soft",
+      "--cis-color-gold-contrast"
+    ],
+    "color-network": [
+      "--cis-color-network",
+      "--cis-color-network-strong",
+      "--cis-color-network-soft",
+      "--cis-color-network-contrast"
+    ],
+    "color-status": [
+      "--cis-color-success",
+      "--cis-color-warning",
+      "--cis-color-danger"
+    ],
+    "focus": [
+      "--cis-focus-ring-color",
+      "--cis-focus-ring-width",
+      "--cis-focus-ring-offset",
+      "--cis-focus-ring"
+    ],
+    "font": [
+      "--cis-font-sans",
+      "--cis-font-mono",
+      "--cis-font-size-xs",
+      "--cis-font-size-sm",
+      "--cis-font-size-md",
+      "--cis-font-size-lg",
+      "--cis-font-size-xl",
+      "--cis-font-size-2xl",
+      "--cis-line-height-tight",
+      "--cis-line-height-base",
+      "--cis-line-height-relaxed",
+      "--cis-font-weight-regular",
+      "--cis-font-weight-medium",
+      "--cis-font-weight-semibold",
+      "--cis-font-weight-bold",
+      "--cis-letter-spacing-tight",
+      "--cis-letter-spacing-wide"
+    ],
+    "layout": [
+      "--cis-layout-container",
+      "--cis-layout-header-height",
+      "--cis-layout-mobile-breakpoint"
+    ],
+    "motion": [
+      "--cis-motion-duration-fast",
+      "--cis-motion-duration-base",
+      "--cis-motion-ease"
+    ],
+    "radius": [
+      "--cis-radius-xs",
+      "--cis-radius-sm",
+      "--cis-radius-md",
+      "--cis-radius-lg",
+      "--cis-radius-pill"
+    ],
+    "shadow": [
+      "--cis-shadow-sm",
+      "--cis-shadow-md"
+    ],
+    "space": [
+      "--cis-space-2xs",
+      "--cis-space-xs",
+      "--cis-space-sm",
+      "--cis-space-md",
+      "--cis-space-lg",
+      "--cis-space-xl",
+      "--cis-space-2xl",
+      "--cis-space-3xl"
+    ]
+  },
+  "token_keys": [
+    "--cis-border-width",
+    "--cis-border-width-strong",
+    "--cis-color-agent",
+    "--cis-color-agent-contrast",
+    "--cis-color-agent-soft",
+    "--cis-color-danger",
+    "--cis-color-gold",
+    "--cis-color-gold-contrast",
+    "--cis-color-gold-soft",
+    "--cis-color-graphite",
+    "--cis-color-graphite-raised",
+    "--cis-color-ink",
+    "--cis-color-ink-inverse",
+    "--cis-color-ink-muted",
+    "--cis-color-line",
+    "--cis-color-line-strong",
+    "--cis-color-network",
+    "--cis-color-network-contrast",
+    "--cis-color-network-soft",
+    "--cis-color-network-strong",
+    "--cis-color-paper",
+    "--cis-color-paper-raised",
+    "--cis-color-paper-sunken",
+    "--cis-color-success",
+    "--cis-color-warning",
+    "--cis-focus-ring",
+    "--cis-focus-ring-color",
+    "--cis-focus-ring-offset",
+    "--cis-focus-ring-width",
+    "--cis-font-mono",
+    "--cis-font-sans",
+    "--cis-font-size-2xl",
+    "--cis-font-size-lg",
+    "--cis-font-size-md",
+    "--cis-font-size-sm",
+    "--cis-font-size-xl",
+    "--cis-font-size-xs",
+    "--cis-font-weight-bold",
+    "--cis-font-weight-medium",
+    "--cis-font-weight-regular",
+    "--cis-font-weight-semibold",
+    "--cis-layout-container",
+    "--cis-layout-header-height",
+    "--cis-layout-mobile-breakpoint",
+    "--cis-letter-spacing-tight",
+    "--cis-letter-spacing-wide",
+    "--cis-line-height-base",
+    "--cis-line-height-relaxed",
+    "--cis-line-height-tight",
+    "--cis-motion-duration-base",
+    "--cis-motion-duration-fast",
+    "--cis-motion-ease",
+    "--cis-radius-lg",
+    "--cis-radius-md",
+    "--cis-radius-pill",
+    "--cis-radius-sm",
+    "--cis-radius-xs",
+    "--cis-shadow-md",
+    "--cis-shadow-sm",
+    "--cis-space-2xl",
+    "--cis-space-2xs",
+    "--cis-space-3xl",
+    "--cis-space-lg",
+    "--cis-space-md",
+    "--cis-space-sm",
+    "--cis-space-xl",
+    "--cis-space-xs"
+  ],
+  "version": "0.1"
+}
