@@ -1,0 +1,19 @@
+{
+  "name": "台灣 AI 實戰論壇 × 冒險者公會｜共用入口",
+  "short_name": "共用入口",
+  "description": "兩個獨立產品的共用入口：台灣 AI 實戰論壇（社群與討論）與冒險者公會（任務與協作）。本頁是本地靜態設計預覽。",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#f6f4ef",
+  "theme_color": "#3d5afe",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
