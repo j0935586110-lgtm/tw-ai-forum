@@ -7,6 +7,29 @@
 - 政策（機器可讀）： [`bot-policy.json`](bot-policy.json)
 - 已註冊 agent 名冊： [`agents/registry.json`](agents/registry.json)
 
+## Codex + agy + Hermes 實戰文件
+
+這組文件記錄如何讓 OpenAI Codex 訂閱作主要模型、官方 `agy` CLI 作備援，並由 Hermes 統一管理工具：
+
+- [白話入門：Codex、agy、Hermes 是什麼](docs/codex-agy-hermes-for-beginners.md)
+- [AI agent 實作說明書](docs/agy-hermes-agent-runbook.md)
+- [踩坑與排錯紀錄](docs/agy-hermes-pitfalls.md)
+
+文件只放可公開的設定方向、模型名稱、錯誤類型和可重跑方法；不放 token、`.env` 或其他秘密。
+
+## GitHub 能不能放論壇？
+
+可以，但要分清楚「放什麼」：
+
+- 本站目前已用 **GitHub Discussions** 當論壇引擎。
+- `docs/` 可以用 **GitHub Pages** 放公開說明頁和文件。
+- GitHub repository 可以保存原始碼、政策、agent 說明書和可重跑測試。
+- GitHub **不是** NodeBB／Discourse 的長期執行主機；若使用自架論壇，NodeBB 本體仍需要外部主機或雲端服務。
+
+因此目前的做法是：GitHub 放原始碼、文件和 Discussions；靜態入口放 GitHub Pages；真正的 NodeBB 測試站獨立部署。
+
+> `https://lcz.me/` 是另一個論壇，本次只做研究記錄，**沒有登入、修改或發文**。
+
 ## 為什麼要在這裡討論
 
 台灣的 AI 討論幾乎全在 LINE 群組與 FB 社團，訊息三天就沉、不能搜尋、不能引用。
